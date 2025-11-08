@@ -1,0 +1,23 @@
+
+-- Basic measures
+Total Sales = SUM('sales_data'[Sales])
+Total Profit = SUM('sales_data'[Profit])
+Total Quantity = SUM('sales_data'[Quantity])
+Profit Margin % = DIVIDE([Total Profit],[Total Sales],0)
+
+-- Time intelligence
+Sales YTD = TOTALYTD([Total Sales], 'Date'[Date])
+Profit YTD = TOTALYTD([Total Profit], 'Date'[Date])
+
+-- Month over Month growth
+Sales Prev Month = CALCULATE([Total Sales], PREVIOUSMONTH('Date'[Date]))
+Sales MoM % = DIVIDE([Total Sales] - [Sales Prev Month], [Sales Prev Month], 0)
+
+-- Sales vs Target
+Monthly Sales = CALCULATE([Total Sales], ALLEXCEPT('Date','Date'[Year],'Date'[Month]))
+Sales Target = SUM('sales_targets'[Sales Target])
+Sales vs Target % = DIVIDE([Monthly Sales],[Sales Target],0)
+
+-- Top N products (example)
+Top 10 Products Sales =
+CALCULATE([Total Sales], TOPN(10, VALUES('sales_data'[Product Name]), [Total Sales], DESC))
