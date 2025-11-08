@@ -7,4 +7,4 @@
 - `DAX_Measures.txt` — Useful DAX measures with explanations you can paste into Power BI.
 - `Project_Report.md` — A short project report (insights, recommended visuals, and placeholders for screenshots).
 
-Open `/mnt/data/sales_dashboard_project` to access the files.
+
